@@ -6,16 +6,17 @@ class DayThumb extends Component {
   getDateByNum(year, number) {
     let date = new Date(`${year}/01/01`).getTime();
     date = date + (86400000 * (number - 1));
-    return new Date(date).toLocaleDateString('en-GB');
+    return new Date(date).toLocaleDateString('en-GB').split('/');
   }
   render() {
-    let date;
+    let { day, handleFlip } = this.props;
     let year = '2019';
+    let [dd, mm, yyyy] = this.getDateByNum(year, day.dayNum)
     
 
     return (
-      <div className='dayThumb' id={this.props.id}>
-        {this.getDateByNum(year, this.props.day.dayNum)}
+      <div className={'dayThumb ' + this.props.day.classList} id={day.dayNum} onClick={(e) => handleFlip(e)}>
+        {dd + '/' + mm}
       </div>
     );
   }

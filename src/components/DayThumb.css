@@ -1,8 +1,13 @@
 .dayThumb {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   background-color: aquamarine;
   margin: 3px;
   border-radius: 5px;
   text-align: center;
+  user-select: none;
+}
+
+.red {
+  background-color: blueviolet;
 }
