@@ -1,0 +1,8 @@
+.dayThumb {
+  width: 100px;
+  height: 100px;
+  background-color: aquamarine;
+  margin: 3px;
+  border-radius: 5px;
+  text-align: center;
+}
