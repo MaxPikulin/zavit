@@ -25,7 +25,7 @@ class App extends React.PureComponent {
     let object = localStorage.getItem('zavit') || '{}';
     object = JSON.parse(object);
     object.days = object.days || [];
-    if (object.days.length != 365) {
+    if (object.days.length !== 365) {
       for (let i = 0; i < 365; i++) {
         let day = {
           num: 0,
@@ -33,24 +33,24 @@ class App extends React.PureComponent {
           hours: 0,
           proms: []
         }
-        if (object.days.some(d => d.num == i)) continue;
+        if (object.days.some(d => d.num === i)) continue;
         day.num = i;
         day.date = getDateByNum(i);
         object.days.push(day);
       }
     }
-    console.log(object);
+    // console.log(object);
     this.setState({
       days: object.days,
     }, () => this.saveToStorage());
     
   }
 
-  loadFromStorage() {
-    let object = localStorage.getItem('zavit') || '{}';
-    object = JSON.parse(object);
-    this.setState(object);
-  }
+  // loadFromStorage() {
+  //   let object = localStorage.getItem('zavit') || '{}';
+  //   object = JSON.parse(object);
+  //   this.setState(object);
+  // }
 
   saveToStorage() {
     let object = this.state;
@@ -59,17 +59,18 @@ class App extends React.PureComponent {
   }
 
   componentWillMount() {
-    this.loadFromStorage();
+    // this.loadFromStorage();
+    this.handleGenerateClick();
   }
 
 
   handleFlip(e) {
     e.target.classList.toggle('red');
     let newDays = this.state.days.slice();
-    newDays[e.target.id - 1].classList = 'red';
-    this.setState({
-      days: newDays,
-    }, () => this.saveToStorage())
+    newDays[e.target.id].classList = 'red';
+    // this.setState({
+    //   days: newDays,
+    // }, () => this.saveToStorage())
   }
 
   render() {

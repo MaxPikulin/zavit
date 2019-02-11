@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './DayContainer.css';
 import DayThumb from './DayThumb';
 
@@ -6,7 +6,7 @@ class DayContainer extends React.PureComponent {
 
   render() {
     let days = this.props.days;
-    console.log(days);
+    // console.log(days);
     let dayByMonth = '';
     if (days) {
       dayByMonth = days.map(day => {
