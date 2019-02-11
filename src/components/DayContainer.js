@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './DayContainer.css';
 import DayThumb from './DayThumb';
 
-class DayContainer extends Component {
+class DayContainer extends React.PureComponent {
 
   render() {
     let days = this.props.days;
+    console.log(days);
     let dayByMonth = '';
     if (days) {
       dayByMonth = days.map(day => {
-        return <DayThumb key={day.dayNum} day={day} handleFlip={this.props.handleFlip}/>;
+        return <DayThumb key={day.num} day={day} handleFlip={this.props.handleFlip}/>;
       })
     }
     return (
