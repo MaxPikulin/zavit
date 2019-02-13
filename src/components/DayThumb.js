@@ -12,7 +12,7 @@ class DayThumb extends React.PureComponent {
   }
 
   render() {
-    let { day, handleFlip } = this.props;
+    let { day, handleFlip, id } = this.props;
     let greenBox = {
       backgroundColor: 'green',
       height: '10%',
@@ -23,7 +23,7 @@ class DayThumb extends React.PureComponent {
       <div style={today} className='day-thumb-container'>
         <div className='day-thumb req-box'></div>
         <div style={greenBox} className='day-thumb'></div>
-        <div className={'day-thumb'} id={day.num} onClick={(e) => handleFlip(e)}>
+        <div className={'day-thumb'} id={id} onClick={(e) => handleFlip(e)}>
           {day.date}
         </div>
       </div>

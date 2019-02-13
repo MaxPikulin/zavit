@@ -10,6 +10,7 @@ class App extends React.PureComponent {
       days: []
     }
     this.handleFlip = this.handleFlip.bind(this);
+    this.handleCloseDetails = this.handleCloseDetails.bind(this);
     this.saveToStorage = this.saveToStorage.bind(this);
   }
 
@@ -25,26 +26,27 @@ class App extends React.PureComponent {
     }
     let object = localStorage.getItem('zavit') || '{}';
     object = JSON.parse(object);
-    object.days = object.days || [];
-    if (object.days.length !== 365) {
+    object.days = object.days || {};
+    let size = Object.keys(object.days).length;
+    if (size !== 365) {
       for (let i = 0; i < 365; i++) {
         let day = {
-          num: 0,
           date: '01/01/2019',
           hours: 0,
           proms: []
         }
-        if (object.days.some(d => d.num === i)) continue;
-        day.num = i;
+        if (object.days[i]) continue;
         day.date = getDateByNum(i);
-        object.days.push(day);
+        object.days[i] = day;
       }
     }
     // console.log(object);
     this.setState({
       days: object.days,
+      dayDetails: {},
+      visibility: 'hidden',
     }, () => this.saveToStorage());
-    
+
   }
 
   // loadFromStorage() {
@@ -56,7 +58,7 @@ class App extends React.PureComponent {
   saveToStorage() {
     let object = this.state;
     object = JSON.stringify(object);
-  localStorage.setItem('zavit', object);
+    localStorage.setItem('zavit', object);
   }
 
   componentWillMount() {
@@ -66,17 +68,29 @@ class App extends React.PureComponent {
 
 
   handleFlip(e) {
-    e.target.classList.toggle('red');
-    let newDays = this.state.days.slice();
-    newDays[e.target.id].classList = 'red';
+    // e.target.parentNode.parentNode.style.visibility = 'visible';
+    let dayNum = e.currentTarget.id;
+    let day = this.state.days[dayNum];
+    console.log(day);
+    this.setState({
+      dayDetails: day,
+      visibility: 'visible',
+    })
+    // e.target.classList.toggle('red');
+    // console.log(e.currentTarget.id);
+    // let newDays = this.state.days.slice();
+    // newDays[e.target.id].classList = 'red';
     // this.setState({
     //   days: newDays,
     // }, () => this.saveToStorage())
   }
-  
+
   handleCloseDetails(e) {
-    // console.log(e.parent);
-    e.target.parentNode.parentNode.style.visibility = 'hidden';
+    // console.log(e);
+    console.log(this);
+    this.setState({
+      visibility: 'hidden',
+    });
   }
 
   render() {
@@ -84,7 +98,7 @@ class App extends React.PureComponent {
       <div className="container">
         <TestThumb /><button onClick={(e) => this.handleGenerateClick(e)}>Generate object</button>
         <DayContainer days={this.state.days} handleFlip={this.handleFlip} />
-        <DayDetails closeDetails={this.handleCloseDetails} />
+        <DayDetails visibility={this.state.visibility} closeDetails={this.handleCloseDetails} day={this.state.dayDetails} />
       </div>
     );
   }

@@ -6,11 +6,12 @@ class DayContainer extends React.PureComponent {
 
   render() {
     let days = this.props.days;
-    let dayElements = '';
+    let dayElements = [];
     if (days) {
-      dayElements = days.map(day => {
-        return <DayThumb day={day} handleFlip={this.props.handleFlip} key={day.num}/>;
-      })
+      for (let dayNum in days) {
+        console.log(days[dayNum]);
+        dayElements.push(<DayThumb day={days[dayNum]} handleFlip={this.props.handleFlip} key={dayNum} id={dayNum}/>);
+      }
     }
 
     return (
