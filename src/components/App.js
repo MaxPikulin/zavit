@@ -1,6 +1,7 @@
 import React, { /* Component */ } from 'react';
 import DayContainer from './DayContainer';
 import TestThumb from './TestThumb';
+import DayDetails from './DayDetails';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -72,12 +73,18 @@ class App extends React.PureComponent {
     //   days: newDays,
     // }, () => this.saveToStorage())
   }
+  
+  handleCloseDetails(e) {
+    // console.log(e.parent);
+    e.target.parentNode.parentNode.style.visibility = 'hidden';
+  }
 
   render() {
     return (
-      <div>
+      <div className="container">
         <TestThumb /><button onClick={(e) => this.handleGenerateClick(e)}>Generate object</button>
         <DayContainer days={this.state.days} handleFlip={this.handleFlip} />
+        <DayDetails closeDetails={this.handleCloseDetails} />
       </div>
     );
   }

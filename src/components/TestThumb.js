@@ -19,18 +19,17 @@ class TestThumb extends Component {
       height: this.gr + '0%',
     }
     let redBox = {
-      backgroundColor: 'red',
-      height: '50%'
+      height: '30%'
     }
     return (
-      <div className='container' onClick={(e) => this.clickHandler(e)}>
-        <div style={redBox} className='testThumb'>
+      <div className='day-thumb-container' onClick={(e) => this.clickHandler(e)}>
+        <div style={redBox} className='day-thumb req-box'>
 
         </div>
-        <div style={greenBox} className='testThumb green'>
+        <div style={greenBox} className='day-thumb green'>
 
         </div>
-        <div className='testThumb'>
+        <div className='day-thumb'>
           hello
         </div>
       </div>
