@@ -3,27 +3,30 @@ import './DayThumb.css';
 
 class DayThumb extends React.PureComponent {
 
-  today() {
-    let td = new Date().toLocaleDateString('en-GB').slice(0, -5);
-    if (this.props.day.date === td)
-      return { borderColor: 'red',
-    backgroundColor: 'white', }
-    return {};
+  todayStyle(todayNum, thisNum) {
+    switch (true) {
+      case todayNum < thisNum:
+        return 'day-future';
+      case todayNum > thisNum:
+        return 'day-past';
+      default:
+        return 'day-today';
+    }
   }
 
   render() {
-    let { day, handleFlip, id } = this.props;
+    let { day, handleFlip, id, todayNum } = this.props;
     let greenBox = {
       backgroundColor: 'green',
-      height: '10%',
+      height: '0%',
     }
-    let today = this.today();
+    let today = this.todayStyle(todayNum, id);
 
     return (
-      <div style={today} className='day-thumb-container'>
-        <div className='day-thumb req-box'></div>
-        <div style={greenBox} className='day-thumb'></div>
-        <div className={'day-thumb'} id={id} onClick={(e) => handleFlip(e)}>
+      <div className={'day-thumb-container day-wh ' + today}>
+        <div className='day-thumb day-wh req-box'></div>
+        <div style={greenBox} className='day-thumb day-wh'></div>
+        <div className='day-thumb day-wh' id={id} onClick={(e) => handleFlip(e)}>
           {day.date}
         </div>
       </div>

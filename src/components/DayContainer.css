@@ -2,7 +2,3 @@
   display: flex;
   flex-wrap: wrap;
 }
-.break {
-  width:200px;
-  margin: 6px;
-}

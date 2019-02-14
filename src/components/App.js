@@ -2,6 +2,7 @@ import React, { /* Component */ } from 'react';
 import DayContainer from './DayContainer';
 import TestThumb from './TestThumb';
 import DayDetails from './DayDetails';
+import './App.css';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -96,9 +97,9 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="container">
-        <TestThumb /><button onClick={(e) => this.handleGenerateClick(e)}>Generate object</button>
         <DayContainer days={this.state.days} handleFlip={this.handleFlip} />
         <DayDetails visibility={this.state.visibility} closeDetails={this.handleCloseDetails} day={this.state.dayDetails} />
+        {/* <TestThumb /><button onClick={(e) => this.handleGenerateClick(e)}>Generate object</button> */}
       </div>
     );
   }

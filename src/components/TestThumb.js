@@ -22,14 +22,14 @@ class TestThumb extends Component {
       height: '30%'
     }
     return (
-      <div className='day-thumb-container' onClick={(e) => this.clickHandler(e)}>
-        <div style={redBox} className='day-thumb req-box'>
+      <div className='day-thumb-container day-wh' onClick={(e) => this.clickHandler(e)}>
+        <div style={redBox} className='day-thumb day-wh req-box'>
 
         </div>
-        <div style={greenBox} className='day-thumb green'>
+        <div style={greenBox} className='day-thumb day-wh green'>
 
         </div>
-        <div className='day-thumb'>
+        <div className='day-thumb day-wh'>
           hello
         </div>
       </div>

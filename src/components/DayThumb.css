@@ -2,28 +2,43 @@
   background-color: blueviolet;
 }
 
-.day-thumb-container {
-  width: 50px;
-  height: 50px;
-  border: 1px solid aquamarine;
-  background-color: lightgray;
-  margin: 3px;
-  border-radius: 5px;
+.day-wh {
+  width: 35px;
+  height: 35px;
   text-align: center;
   user-select: none;
+  font-size: 0.9em;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.day-thumb-container {
+  /* border: 1px solid green; */
+  background-color: lightgray;
+  margin: 2px;
+  border-radius: 1px;
   position: relative;
   overflow: hidden;
 }
 .day-thumb {
-  width: 50px;
-  height: 50px;
   bottom: 0;
-  text-align: center;
-  user-select: none;
   position: absolute;
 }
 
 .req-box {
   background-color: red;
   height: 50%;
+}
+
+.day-past {
+  background-color: rgb(255, 255, 255);
+  border-color: red;
+  opacity: 0.15;
+}
+.day-today {
+  background-color: rgb(255, 255, 255);
+  border-color: white;
+}
+.day-future {
+  background-color: rgba(255, 255, 255);
+  opacity: 0.5;
 }

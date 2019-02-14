@@ -16,7 +16,7 @@ class DayDetails extends Component {
           {props}
         </div>
       </div>
-    );
+    )
   }
 }
 
